@@ -15,6 +15,11 @@ RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser
 
+# Force Puppeteer to use the installed Chrome instead of downloading a new one
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome
+ENV RENDER=true
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
