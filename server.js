@@ -58,19 +58,19 @@ const MAX_REQUESTS = 5;
 function rateLimiter(req, res, next) {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const now = Date.now();
-    
+
     if (!rateLimitMap[ip]) {
         rateLimitMap[ip] = [];
     }
-    
+
     // Remove old timestamps
     rateLimitMap[ip] = rateLimitMap[ip].filter(t => now - t < RATE_LIMIT_WINDOW);
-    
+
     if (rateLimitMap[ip].length >= MAX_REQUESTS) {
         console.log(`[SECURITY] RATE LIMITED IP: ${ip}`);
         return res.status(429).json({ error: "Too many requests. Please wait a minute." });
     }
-    
+
     rateLimitMap[ip].push(now);
     next();
 }
@@ -263,3 +263,5 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log('===========================================');
     console.log('');
 });
+
+
