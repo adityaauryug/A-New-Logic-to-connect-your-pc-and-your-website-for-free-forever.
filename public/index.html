@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATHI - Sculpting thoughts in silence.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Code Formatting -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SVG Filters for chalk texture -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <filter id="chalk" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" seed="2"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Background layers -->
+    <div class="bg-base"></div>
+    <div class="bg-grain"></div>
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-blob bg-blob-3"></div>
+
+    <!-- LANDING PAGE -->
+    <div class="landing-page" id="landingPage">
+        <!-- Wavy Line Animation -->
+        <div class="wavy-hero">
+            <svg viewBox="0 0 120 30" class="wavy-svg">
+                <path class="wave-path wave-1" d="M5 15 Q 15 5, 25 15 T 45 15 T 65 15 T 85 15 T 105 15 T 120 15" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="wave-path wave-2" d="M5 15 Q 15 5, 25 15 T 45 15 T 65 15 T 85 15 T 105 15 T 120 15" fill="none" stroke-width="2" stroke-linecap="round"/>
+                <path class="wave-path wave-3" d="M5 15 Q 15 5, 25 15 T 45 15 T 65 15 T 85 15 T 105 15 T 120 15" fill="none" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <p class="tagline">Sculpting thoughts in silence.</p>
+
+        <!-- Search Pill (Landing) -->
+        <div class="search-pill-wrapper">
+            <div class="search-pill" id="landingPill">
+                <div class="pill-glow"></div>
+                <div class="pill-inner">
+                    <div class="bulb-container">
+                        <i class="fa-solid fa-lightbulb bulb-icon"></i>
+                    </div>
+                    <input type="text" id="landingInput" placeholder="Let's invent the next big thing. Share your idea..." autocomplete="off">
+                    <button id="landingSendBtn" class="send-btn" aria-label="Send">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Landing Footer (absolute bottom) -->
+        <div class="landing-footer">
+            <span class="footer-credit">made by YUG thakur</span>
+            <span class="footer-copy">&copy; 2025 YUG Thakur. All rights reserved.</span>
+        </div>
+    </div>
+
+    <!-- CHAT PAGE -->
+    <div class="chat-page" id="chatPage">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <button class="header-btn back-btn" id="backBtn" aria-label="Go back">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1 class="chat-logo">MATHI</h1>
+            <button class="header-btn settings-btn" aria-label="Settings">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+        </div>
+
+        <!-- Messages -->
+        <main class="chat-container" id="chatContainer">
+            <!-- Messages injected here -->
+        </main>
+
+        <!-- Loading Indicator -->
+        <div class="loading-bar" id="loadingBar">
+            <div class="loading-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <span class="loading-label" id="loadingText">analysing your request ...</span>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-wrapper">
+            <div class="chat-pill" id="chatPill">
+                <div class="pill-glow"></div>
+                <div class="pill-inner">
+                    <input type="text" id="chatInput" placeholder="Type your prompt..." autocomplete="off">
+                    <button id="chatSendBtn" class="send-btn" aria-label="Send">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Footer (VERY BOTTOM) -->
+        <div class="chat-bottom-footer">
+            <div class="footer-row">
+                <span>RAW_INPUT_MODE: ACTIVE</span>
+                <span>MADE BY YUG THAKUR</span>
+            </div>
+            <span class="copyright-line">&copy; 2025 YUG Thakur. All rights reserved.</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
