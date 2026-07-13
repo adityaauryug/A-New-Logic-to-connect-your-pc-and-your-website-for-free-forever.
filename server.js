@@ -130,6 +130,7 @@ const client = new Client({
     authStrategy: new LocalAuth({ clientId: "webserver" }),
     puppeteer: {
         headless: true,
+        executablePath: process.env.RENDER ? '/usr/bin/google-chrome' : undefined,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -146,7 +147,7 @@ let isWhatsAppReady = false;
 
 client.on('qr', (qr) => {
     console.log('[MATHI-WEB] Scan this QR Code to connect the Web Server to WhatsApp:');
-    qrcode.generate(qr, { small: true });
+    qrcode.generate(qr); // Using large mode for better scannability in Render terminal
 });
 
 client.on('ready', () => {
